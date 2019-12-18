@@ -1,15 +1,13 @@
 import React from 'react'; 
 import axiosWithAuth from '../utils/axiosWithAuth'
 
-class AddFriends extends React.Component{
+class RemoveFriends extends React.Component{
 
     state = {
 
-        addFriend: {
-            id: Date.now(), 
-            name: "", 
-            age: undefined,
-            email: ""
+        removeFriend: {
+            id: undefined, 
+            
 
         }
     }
@@ -19,7 +17,7 @@ class AddFriends extends React.Component{
         e.preventDefault()
         this.props.setUpdate(true)
         axiosWithAuth()
-            .post('/friends', this.state.addFriend)
+            .delete(`/friends/${this.state.removeFriend.id}`)
             .then(res => {
                 console.log("addFriend response", res)
                 
@@ -28,12 +26,11 @@ class AddFriends extends React.Component{
                  
             })
     }
-    
 
     handleChange = e => {
         this.setState({
-            addFriend:{
-                ...this.state.addFriend, 
+            removeFriend:{
+                ...this.state.removeFriend, 
                 [e.target.name]: e.target.value
             } 
             
@@ -52,31 +49,18 @@ class AddFriends extends React.Component{
             <div style={{display: `flex`, flexDirection: `column`, alignItems: `space-between`, justifyContent: `space-evenly`, position: `relative`, top: `-1500`}}>
                       
                 <div>
-                <h1 style = {{marginLeft: `150px`}}>ADD to Friends List</h1>
+                <h1 style = {{marginLeft: `150px`}}>Remove Friend</h1>
                 <form  style={{backgroundColor: `rgb(242,138,49,.50)`, position: `relative`, left: `200px`, height: `250px`, width: `200px`, display: `flex`, flexDirection: `column`, padding: `35px`}} onSubmit={this.AddOne}
                 >
-                    <label>Name</label>
+                    <label>Remove by Id</label>
                     <input style={{margin: `auto`, width: `120px`}}
                     type = "text"
-                    name = "name" 
-                    value = {this.state.addFriend.name}
+                    name = "id" 
+                    value = {this.state.removeFriend.id}
                     onChange = {this.handleChange}
                     /> 
-                    <label>Age</label>
-                    <input style={{margin: `auto`, width: `120px`}}
-                    type = "text" 
-                    name = "age" 
-                    value = {this.state.addFriend.age}
-                    onChange = {this.handleChange}
-                    /> 
-                    <label>Email</label>
-                    <input style={{margin: `auto`, width: `120px`}}
-                    type = "text" 
-                    name = "email" 
-                    value = {this.state.addFriend.email}
-                    onChange = {this.handleChange}
-                    /> 
-                    <button  style={{margin: `auto`, width: `80px`, height: `30px`}} >Add Friend</button>
+                    
+                    <button  style={{margin: `auto`, width: `80px`, height: `30px`}} >Remove Friend</button>
                 
                 </form>
                 </div>
@@ -87,4 +71,4 @@ class AddFriends extends React.Component{
 
 }
 
-export default AddFriends;
+export default RemoveFriends;

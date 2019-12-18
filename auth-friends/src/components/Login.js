@@ -47,7 +47,7 @@ class Login extends React.Component {
             <div>
                 <h2 style={{color: 'darkOrange', fontWeight: "bold"}}>Login 🈴️</h2>
                
-                <form style= {{backgroundColor: `lightGrey`, position: `relative`, left: `200px`, height: `250px`, width: `200px`, display: `flex`, flexDirection: `column`, padding: `35px`}}onSubmit={this.login}>
+                <form style= {{zIndex: `100`, backgroundColor: `lightGrey`, position: `relative`, left: `200px`, height: `250px`, width: `200px`, display: `flex`, flexDirection: `column`, padding: `35px`}}onSubmit={this.login}>
                     <label>Username</label>
                     <input style={{margin: `auto`, width: `120px`}}
                     type = "text"
@@ -65,7 +65,7 @@ class Login extends React.Component {
                     <button style={{margin: `auto`, width: `80px`, height: `30px`}} >Log in</button>
                     {this.state.isFetching && "logging in"}
                 </form>
-                <img style = {{position: `relative`, top: `-400px`, left: `200px`, width: `200px`}} src={power}/> 
+                <img style = {{position: `relative`, top: `-350px`, left: `200px`, width: `200px`}} src={power}/> 
                 <div style = {{display: `flex` , justifyContent: `center`}}>
                 
                 
